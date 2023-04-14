@@ -1,8 +1,6 @@
-import { unsafeCSS } from "lit";
-import { html, LitElement, css } from "lit";
-
-import "@vaadin/button/vaadin-button";
-import "../components/ex-card.js";
+import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import '@vaadin/vaadin-button/vaadin-button.js';
+import '../components/ex-card.js';
 
 /**
  * `fixed-nav-sticky-footer-view`
@@ -12,93 +10,84 @@ import "../components/ex-card.js";
  * @customElement
  * @polymer
  */
-class FixedNavStickyFooterView extends LitElement {
-  static get styles() {
-    const includedStyles = {};
-    includedStyles["common-styles"] =
-      document.querySelector("dom-module[id='common-styles']")
-        ?.firstElementChild?.content?.firstElementChild?.innerText ?? "";
-    return [
-      unsafeCSS(includedStyles["common-styles"]),
-      css`
-        :host {
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-        }
+class FixedNavStickyFooterView extends PolymerElement {
 
-        .wrapper {
-          margin: 0 auto; /* Horizontally center the layout grid if there is space around it */
-          max-width: 960px;
-          padding: 0 var(--lumo-space-m);
-        }
+    static get template() {
+        return html`
+            <style include="common-styles">
+                :host {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                }
 
-        #header {
-          z-index: 1;
-          position: fixed;
-          right: 0;
-          left: 0;
-          display: flex;
-          white-space: nowrap;
-          flex-wrap: wrap;
-          align-items: center;
-          padding: 0 var(--lumo-space-s);
-          --lumo-primary-text-color: var(--lumo-contrast-90pct);
-        }
+                .wrapper {
+                    margin: 0 auto; /* Horizontally center the layout grid if there is space around it */
+                    max-width: 960px;
+                    padding: 0 var(--lumo-space-m);
+                }
 
-        .searchField {
-          padding: var(--lumo-space-s) 0;
-          margin-right: var(--lumo-space-s);
-        }
+                #header {
+                    z-index: 1;
+                    position: fixed;
+                    right: 0;
+                    left: 0;
+                    display: flex;
+                    white-space: nowrap;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    padding: 0 var(--lumo-space-s);
+                    --lumo-primary-text-color: var(--lumo-contrast-90pct);
+                }
 
-        #header a {
-          display: inline-block;
-          margin: var(--lumo-space-s);
-        }
+                .searchField {
+                    padding: var(--lumo-space-s) 0;
+                    margin-right: var(--lumo-space-s);
+                }
 
-        #header .titleLink {
-          font-size: var(--lumo-font-size-xl);
-          margin-right: var(--lumo-space-m);
-        }
+                #header a {
+                    display: inline-block;
+                    margin: var(--lumo-space-s);
+                }
 
-        main {
-          flex-shrink: 0;
-        }
+                #header .titleLink {
+                    font-size: var(--lumo-font-size-xl);
+                    margin-right: var(--lumo-space-m);
+                }
 
-        #main {
-          margin-top: 100px;
-        }
+                main {
+                    flex-shrink: 0;
+                }
 
-        footer {
-          margin-top: auto;
-          background-color: var(--lumo-shade-10pct);
-          padding: var(--lumo-space-wide-m);
-        }
-      `,
-    ];
-  }
-  render() {
-    return html`
-      <header id="header" theme="dark"></header>
-      <main>
-        <div id="main" class="wrapper"></div>
-      </main>
-      <footer>
-        <div id="footer" class="wrapper"></div>
-      </footer>
-      <vaadin-button
-        style="width: 200px;margin-left: auto;margin-right: auto;"
-        onclick="window.location.href='https://github.com/vaadin/layout-examples/blob/master/src/main/java/com/vaadin/demo/views/FixedNavStickyFooterView.java'"
-      >
-        <img src="icons/Github.png" slot="prefix" />
-        View source code
-      </vaadin-button>
-    `;
-  }
+                #main {
+                    margin-top: 100px;
+                }
 
-  static get is() {
-    return "fixed-nav-sticky-footer-view";
-  }
+                footer {
+                    margin-top: auto;
+                    background-color: var(--lumo-shade-10pct);
+                    padding: var(--lumo-space-wide-m);
+                }
+            </style>
+            <header id="header" theme="dark"></header>
+            <main>
+                <div id="main" class="wrapper"></div>            
+            </main>
+            <footer>
+                <div id="footer" class="wrapper"></div>
+            </footer>
+            <vaadin-button
+                    style = "width: 200px;margin-left: auto;margin-right: auto;"
+                    onclick = "window.location.href='https://github.com/vaadin/layout-examples/blob/master/src/main/java/com/vaadin/demo/views/FixedNavStickyFooterView.java'">
+              <img src = "icons/Github.png" slot="prefix"></img>
+              View source code
+            </vaadin-button>
+        `;
+    }
+
+    static get is() {
+        return 'fixed-nav-sticky-footer-view';
+    }
 }
 
 customElements.define(FixedNavStickyFooterView.is, FixedNavStickyFooterView);

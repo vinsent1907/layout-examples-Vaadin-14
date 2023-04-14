@@ -8,16 +8,17 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.polymertemplate.Id;
+import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.component.littemplate.LitTemplate;
-import com.vaadin.flow.component.template.Id;
+import com.vaadin.flow.templatemodel.TemplateModel;
 
 @Route(value = "two-columns", layout = MainView.class)
 @PageTitle("Two Columns")
 @Tag("two-columns-view")
 @JsModule("./src/views/two-columns-view.js")
-public class TwoColumnsView extends LitTemplate {
+public class TwoColumnsView extends PolymerTemplate<TemplateModel> {
 
     @Id("header")
     Div header;
